@@ -9,8 +9,8 @@ def random_test_case():
 
     test_cases = {}
     print(os.getcwd())
-    for dir in os.listdir(f'{os.getcwd()}\\numbers\\mnist_png\\Hnd'):
-        for index, file in enumerate(os.listdir(f'{os.getcwd()}\\numbers\\mnist_png\\Hnd\\{dir}')):
+    for dir in os.listdir(f'{os.getcwd()}\\numbers\\mnist_png\\Hnd'): ####################################################################################################
+        for index, file in enumerate(os.listdir(f'{os.getcwd()}\\numbers\\mnist_png\\Hnd\\{dir}')): ####################################################################################################
             if index <= 10:
                 test_cases[(os.listdir(f'{os.getcwd()}\\numbers\\mnist_png\\Hnd\\{dir}'))[random.randint(100, 5000)]] = dir[-1] ## avoids using trained on images
                 # dir[-1] is the correct answer
@@ -20,13 +20,13 @@ def random_test_case():
 test_cases = random_test_case()
 
 # Load the trained model
-model_path = '[MODEL FILE PATH]'
-test_path = '[MODEL DIR PATH]'
+model_path = 'C:\\Users\\User\\Documents\\Development\\AI\\identify numbers\\code\\model\\mnist_model.h5' ####################################################################################################
+test_path = 'C:\\Users\\User\\Documents\\Development\\AI\\identify numbers\\code\\model\\'#################################################################################################### 
 model = load_model(model_path)
 
 # Load and preprocess the input image
 
-os.chdir('[MNIST HND DIRECTORY]')
+os.chdir('C:\\Users\\User\\Documents\\Development\\AI\\identify numbers\\numbers\\mnist_png\\Hnd\\')#################################################################################################### 
 
 correct_prediction = 0
 incorrect = 0
