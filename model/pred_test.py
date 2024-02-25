@@ -11,7 +11,7 @@ def random_test_case():
     print(os.getcwd())
     for dir in os.listdir(f'{os.getcwd()}\\numbers\\mnist_png\\Hnd'): ####################################################################################################
         for index, file in enumerate(os.listdir(f'{os.getcwd()}\\numbers\\mnist_png\\Hnd\\{dir}')): ####################################################################################################
-            if index <= 10:
+            if index <= random.randint(10, 100):
                 test_cases[(os.listdir(f'{os.getcwd()}\\numbers\\mnist_png\\Hnd\\{dir}'))[random.randint(100, 5000)]] = dir[-1] ## avoids using trained on images
                 # dir[-1] is the correct answer
     
@@ -39,16 +39,18 @@ for file, correct in test_cases.items():
     img_array = np.expand_dims(img_array, axis=0)
     img_array = img_array / 255.0
 
+
+
     # predict VVV
     
     prediction = model.predict(img_array)
     predicted_class = np.argmax(prediction)
-    print(f"The model classified the image {file} as digit: {predicted_class} | Correct answer {correct}")
 
     if int(predicted_class) == int(correct):
         correct_prediction += 1
     else:
         incorrect += 1
+        print(f"The model classified the image {file} as digit: {predicted_class} | Correct answer {correct}")
     
-    print(f'FINAL ACCURACY : {correct_prediction}/{correct_prediction+incorrect} : {correct_prediction/(correct_prediction+incorrect)}')
+    print(f'FINAL ACCURACY : {correct_prediction}/{correct_prediction+incorrect} : {(correct_prediction/(correct_prediction+incorrect))}% Accuracy')
         
