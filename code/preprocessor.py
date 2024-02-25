@@ -26,9 +26,6 @@ def process_image(img_paths: list[str]) -> list[tf.float32, int]:
 
         os.chdir('C:\\Users\\User\\Documents\\Development\\AI\\identify numbers\\numbers\\mnist_png\\Hnd') ####################################################################################################
 
-        # augmentation after the model is complete so my model is superior 😎
-
-
     return processed_images, labels
 
 
