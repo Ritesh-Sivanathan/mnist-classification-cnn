@@ -12,7 +12,6 @@ def process_image(img_paths: list[str]) -> list[tf.float32, int]:
         os.chdir(f'{os.getcwd()}\\{directory}')
 
         for index, unprocessed_img in enumerate(os.listdir()):
-            if index <= 250:
                 image = tf.io.read_file(unprocessed_img)
                 processed_image = tf.io.decode_image(image, channels=1) # mnist dataset is greyscale so rather than 3 channels (rgb) you use just one 
                 processed_image = tf.image.resize(processed_image, [28, 28]) # all images in mnist datset are 28x28 (i believe)
