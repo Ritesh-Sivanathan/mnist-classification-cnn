@@ -9,7 +9,9 @@ def process_image(img_paths: list[str]) -> list[tf.float32, int]:
 
     for directory in img_paths:
 
-        os.chdir(f'{os.getcwd()}\\{directory}')
+        # os.chdir(f'{os.getcwd()}\\{directory}')
+
+        os.chdir(os.path.join('..', directory))
 
         for index, unprocessed_img in enumerate(os.listdir()):
             if index <= 50:
@@ -24,7 +26,7 @@ def process_image(img_paths: list[str]) -> list[tf.float32, int]:
                 
                 labels.append(int(os.getcwd()[-1])) ### appends last digit of the directory name since that's the corresponding number
 
-        os.chdir('[MNIST HND DIRECTORY]')
+        os.chdir(os.path.join('..', 'Hnd')) # replace with whatever the actual mnist main directory is
 
     return processed_images, labels
 
