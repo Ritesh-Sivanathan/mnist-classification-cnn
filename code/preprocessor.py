@@ -9,9 +9,7 @@ def process_image(img_paths: list[str]) -> list[tf.float32, int]:
 
     for directory in img_paths:
 
-        os.chdir(f'{os.getcwd()}\\{directory}')
-
-        for index, unprocessed_img in enumerate(os.listdir()):
+        for index, unprocessed_img in enumerate(os.listdir(f'../data/mnist/Hnd/{directory}')): # not sure if this is the correct way for the mnist dataset file struct but ...
                 image = tf.io.read_file(unprocessed_img)
                 processed_image = tf.io.decode_image(image, channels=1) # mnist dataset is greyscale so rather than 3 channels (rgb) you use just one 
                 processed_image = tf.image.resize(processed_image, [28, 28]) # all images in mnist datset are 28x28 (i believe)
@@ -21,9 +19,7 @@ def process_image(img_paths: list[str]) -> list[tf.float32, int]:
 
                 processed_images.append(processed_image)
                 
-                labels.append(int(os.getcwd()[-1])) ### appends last digit of the directory name since that's the corresponding number
-
-        os.chdir('C:\\Users\\User\\Documents\\Development\\AI\\identify numbers\\numbers\\mnist_png\\Hnd') ####################################################################################################
+                labels.append(int(directory[-1])) ### appends last digit of the directory name since that's the corresponding number
 
     return processed_images, labels
 

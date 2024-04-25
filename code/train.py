@@ -8,8 +8,7 @@ import os
 
 path_list = []
 
-os.chdir(f'{os.getcwd()}\\numbers\\mnist_png\\Hnd') ####################################################################################################
-for path in os.listdir():
+for path in os.listdir('..numbers/mnist_png/Hnd'):
     path_list.append(path)
 
 processed_images, labels = process_image(path_list)
@@ -49,5 +48,4 @@ test_loss, test_acc = model.evaluate(dataset)
 
 print(f'ACCURACY: {test_acc}')
 
-os.chdir(f'C:\\Users\\User\\Documents\\Development\\AI\\identify numbers\\code\\') ####################################################################################################
-model.save('model\\mnist_model.h5') ####################################################################################################
+model.save('../model/mnist_model.h5')
